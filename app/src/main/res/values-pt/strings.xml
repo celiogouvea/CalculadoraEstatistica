@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //strings principal
+    <string name="app_name">Calculadora Estatistica</string>
+    <string name="btsobre">Sobre !</string>
+    <string name="btrol">Rol</string>
+    <string name="btcadastro">Cadastro</string>
+
+    //string cadastro
+    <string name="tvnumeros">Numeros</string>
+    <string name="etnumeros">Valores 0 - 9</string>
+    <string name="btcadastrovalores">Salvar</string>
+    <string name="avisoSalvar">Informações Salva com Sucesso</string>
+    <string name="avisoCampoVazio">Campo Obrigatorio !</string>
+    <string name="avisoContinuar">Deseja Continuar a Inserir Dados ?</string>
+    <string name="btLimparBanco">Excluir</string>
+    <string name="tvLimparBanco">Deseja Exluir todos os dados ?</string>
+
+
+    //string rol
+    <string name="avisoBanco">Banco sem Dados</string>
+
+
+
+    //sttrings sobre
+    <string name="twsobreuniversidade">Universidade do Tocantins</string>
+    <string name="twsobrepessoastitulo">Desenvolvedor</string>
+    <string name="twsobrepessoasdesenvolvedores">Célio Gomes Gouvêa</string>
+    <string name="twsobrepessoastitulo2">Orientadores</string>
+    <string name="twsobrepessoasorientadores">Arlenes Delabary Spada \nSilvano Maneck Malfati</string>
+    <string name="btVoltar">Voltar</string>
+
+
+    //strings tabela
+    <string name="twClass">Classe</string>
+    <string name="twIntervalo">Intervalo</string>
+    <string name="twFreq">Fi</string>
+    <string name="twFreqRel">Fr</string>
+    <string name="twFreqAcu">Fac</string>
+    <string name="twFreqAcuRel">Frac</string>
+
+
+</resources>

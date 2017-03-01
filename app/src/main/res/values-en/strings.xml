@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //strings tela principal
+    <string name="app_name">Statistics Calculator</string>
+    <string name="btsobre">About !</string>
+    <string name="btrol">Role</string>
+    <string name="btcadastro">Register</string>
+
+    //string tela cadastro
+    <string name="etnumeros">Values 0 - 9</string>
+    <string name="tvnumeros">Numbers</string>
+    <string name="btcadastrovalores">Save</string>
+    <string name="avisoSalvar">Information Saved Successfully</string>
+    <string name="btLimparBanco">Delete</string>
+    <string name="tvLimparBanco">Want to Delete all the data ?</string>
+
+
+
+
+
+    //strings sobre
+    <string name="twsobreuniversidade">University of Tocantins</string>
+    <string name="twsobrepessoastitulo">Developer: </string>
+    <string name="twsobrepessoasdesenvolvedores">Célio Gomes Gouvêa</string>
+    <string name="twsobrepessoastitulo2">Guiding: </string>
+    <string name="twsobrepessoasorientadores">Arlenes Delabary Spada \nSilvano Maneck Malfati</string>
+    <string name="btVoltar">Back</string>
+    </resources>

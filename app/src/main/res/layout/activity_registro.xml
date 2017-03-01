@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/registro">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:text="class"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/classe"
+            android:layout_weight="1"
+            android:gravity="center"/>
+
+        <TextView
+            android:text="intervalo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/intervalo"
+            android:layout_weight="1"
+            android:gravity="center"/>
+
+        <TextView
+            android:text="freq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/freq"
+            android:layout_weight="1"
+            android:gravity="center"/>
+
+        <TextView
+            android:text="freqAcu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/freqAcu"
+            android:layout_weight="1"
+            android:gravity="center"/>
+
+        <TextView
+            android:text="freqRel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/freqRel"
+            android:layout_weight="1"
+            android:gravity="center"/>
+
+        <TextView
+            android:text="freqAcuRel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/freqAcuRel"
+            android:layout_weight="1"
+            android:gravity="center"/>
+    </LinearLayout>
+
+</RelativeLayout>
