@@ -26,7 +26,6 @@ public class DBManager {
         }
     }
 
-
     /***************************************
     *Metodo de inserção de valor no banco
      ***************************************/
@@ -39,7 +38,6 @@ public class DBManager {
     /***********************************************
      * Metodos implementados o rol
      * *********************************************/
-
     public ArrayList<String> getAllItem(){
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String sql = "SELECT * FROM rool ORDER BY item";
@@ -57,6 +55,7 @@ public class DBManager {
     /***********************************************
      * Metodos implementados para a tabela
      * *********************************************/
+    //busca do menor valor do banco
     public String vMIM(){
         String Min = null;
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -67,6 +66,7 @@ public class DBManager {
         }
         return Min;
     }
+    //busca do maior valor do banco
     public String vMAX(){
         String Max = null;
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -77,6 +77,7 @@ public class DBManager {
         }
         return Max;
     }
+    //busca do maior id do banco
     public String tBanco(){
         String Max = null;
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -87,6 +88,7 @@ public class DBManager {
         }
         return Max;
     }
+    //busca da quantidade de itens dentro do intervalo de classe
     public String getItemTable(float minimo, float maximo, float limite){
         if (limite != maximo) {
             String Max = null;

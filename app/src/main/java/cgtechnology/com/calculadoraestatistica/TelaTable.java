@@ -97,11 +97,9 @@ public class TelaTable extends AppCompatActivity {
     public void onResume() {
         super.onResume();
     }
-
     public void onPause() {
         super.onPause();
     }
-
     public void onDestroy() {
         super.onDestroy();
     }
@@ -110,33 +108,36 @@ public class TelaTable extends AppCompatActivity {
     /***********************************************
      * Metodos implementados
      *********************************************/
+    //metodo de criação da tabela
     public void criacaoTable() {
-        valorMin();
-        valorMax();
-        tClasse();
-        calculo();
-        String iten = null;
-        DBManager dbMAnager = new DBManager(this);
-        vInicial = vMin;
-        vFinal = vMin + intervalo;
+        valorMin(); //chamar metodo de nenor valor no banco
+        valorMax(); //chamar metodo de maior valor no banco
+        tClasse();  //chamar metodo de definir o tamanho de da classe
+        calculo();  //chamar metodo de calculo do intervalo
+        String iten = null; // item que recebera quantidade de elementos do
+        DBManager dbMAnager = new DBManager(this); // intanciando a classe de gerenciador do banco de dados
+        vInicial = vMin; //vIncicial recebe vMin para passar para metodo da classe do gerenciador definir o valor inicial do intervalo
+        vFinal = vMin + intervalo;//vFinal recebe vMin mais o intervalo para passar para o metodo da classe de gerenciador definir o valor final do intervalo
 
+        //laço de reptição pra criar a tabelade dados
         for (int i = 0; i < tTable; i++) {
-            iten = dbMAnager.getItemTable(vInicial, vFinal,vMax);
+            iten = dbMAnager.getItemTable(vInicial, vFinal,vMax);// chamando metodo da classe de gerenciador
             Log.i("INFO", " Valor Maximo = " + vMax);
             Log.i("INFO", " Valor Minimo = " + vMin);
-            preencher(iten);
+            preencher(iten); //chamando metodo de atribuição de valores e adicionando a suas classes
 
             //Insere dados no array
             vetRegistros.add(new DadosTabela(i + 1, " " +df.format(vInicial) + "  |-->  " +df.format(vFinal),
                     "  " + iten, "  " + df.format(fac), "   " + df.format(fr), "   " + df.format(frac) ));
-            adaptador = new Adaptador(this, vetRegistros);
-            vInicial = vFinal;
-            vFinal = vFinal + intervalo;
-            iten = null;
+
+            adaptador = new Adaptador(this, vetRegistros);//inserindo dados na classe de adaptador para apresentação no view
+            vInicial = vFinal; // novo valor inicial para a proxima iteração do laço de reptição
+            vFinal = vFinal + intervalo;//novo valor fical para a proxima iteração do laço de repetição
         }
-        vrLista.setAdapter(adaptador);
+        vrLista.setAdapter(adaptador);// colocando os dados na tela
     }
 
+    //metodo de atribuição de valores nas variaveis
     public void preencher(String i) {
         fac = fac + Float.parseFloat(i.toString());
         fr = (100 *Float.parseFloat(i.toString()) / vMax);
@@ -147,18 +148,21 @@ public class TelaTable extends AppCompatActivity {
     }
 
 
+    //metodo de busca do menor valor no banco
     public void valorMin() {
         String busca;
         busca = db.vMIM();
         vMin = Float.parseFloat(busca.toString());
     }
 
+    //metodo de busca do maior valor no banco
     public void valorMax() {
         String busca;
         busca = db.vMAX();
         vMax = Float.parseFloat(busca.toString());
     }
 
+    //metodo para calcular o intervalo
     public void calculo() {
         calculado = vMax - vMin;
         intervalo = (calculado) / tTable;
@@ -169,6 +173,7 @@ public class TelaTable extends AppCompatActivity {
     }
 
 
+    //metodo de definir o tamanho maximo de classes que a tabela deverar ter
     public void tClasse() {
         String busca;
         double k;
