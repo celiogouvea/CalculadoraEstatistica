@@ -89,18 +89,8 @@ public class DBManager {
         return Max;
     }
     //busca da quantidade de itens dentro do intervalo de classe
-    public String getItemTable(float minimo, float maximo, float limite){
-        if (limite != maximo) {
-            String Max = null;
-            SQLiteDatabase db = dbHelper.getReadableDatabase();
-            String sql = "SELECT COUNT(item) FROM rool WHERE item >= '" + minimo + "' AND item < '" + maximo + "' ";
-            Cursor cursor = db.rawQuery(sql, null);
-            if (cursor != null && cursor.moveToFirst()) {
-                Max = cursor.getString(0);
-            }
-            return Max;
-        }
-        else {
+    public String getItemTable(float minimo, float maximo){
+
             String Max = null;
             SQLiteDatabase db = dbHelper.getReadableDatabase();
             String sql = "SELECT COUNT(item) FROM rool WHERE item >= '" + minimo + "' AND item <= '" + maximo + "' ";
@@ -109,7 +99,7 @@ public class DBManager {
                 Max = cursor.getString(0);
             }
             return Max;
-        }
+
     }
 
 

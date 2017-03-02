@@ -35,6 +35,7 @@ public class TelaTable extends AppCompatActivity {
 
 
     //valores usados nas formulas
+    double d = 0.0001;//variavel para a utima laco de repetição
     float vInicial; //recebe os valores minimo de cada classe e passa para o metodo de metodo da classe de gerenciador do banco
     float vFinal; //recebe os valores maximo de cada classe e passa para o metodo de metodo da classe de gerenciador do banco
     float vMin; //determina o menor valor do banco
@@ -121,9 +122,8 @@ public class TelaTable extends AppCompatActivity {
 
         //laço de reptição pra criar a tabelade dados
         for (int i = 0; i < tTable; i++) {
-            iten = dbMAnager.getItemTable(vInicial, vFinal,vMax);// chamando metodo da classe de gerenciador
-            Log.i("INFO", " Valor Maximo = " + vMax);
-            Log.i("INFO", " Valor Minimo = " + vMin);
+
+            iten = dbMAnager.getItemTable(vInicial, vFinal);// chamando metodo da classe de gerenciador
             preencher(iten); //chamando metodo de atribuição de valores e adicionando a suas classes
 
             //Insere dados no array
@@ -131,22 +131,26 @@ public class TelaTable extends AppCompatActivity {
                     "  " + iten, "  " + df.format(fac), "   " + df.format(fr), "   " + df.format(frac) ));
 
             adaptador = new Adaptador(this, vetRegistros);//inserindo dados na classe de adaptador para apresentação no view
+
             vInicial = vFinal; // novo valor inicial para a proxima iteração do laço de reptição
-            vFinal = vFinal + intervalo;//novo valor fical para a proxima iteração do laço de repetição
+            if (i == (tTable-2)){
+                vFinal = (float) ((vFinal+d)+intervalo);
+            }
+            else{
+                vFinal = vFinal + intervalo;//novo valor fical para a proxima iteração do laço de repetição
+            }
         }
         vrLista.setAdapter(adaptador);// colocando os dados na tela
     }
 
     //metodo de atribuição de valores nas variaveis
     public void preencher(String i) {
+        String busca = db.tBanco();
+        int k = Integer.parseInt(busca.toString());
         fac = fac + Float.parseFloat(i.toString());
-        fr = (100 *Float.parseFloat(i.toString()) / vMax);
+        fr = (100 *Float.parseFloat(i.toString()) / k);
         frac = frac + fr;
-        Log.i("INFO", " frequencia acumulada = " + fac);
-        Log.i("INFO", " frequencia relativa = " + fr);
-        Log.i("INFO", " frequencia relativa acumulada = " + frac);
     }
-
 
     //metodo de busca do menor valor no banco
     public void valorMin() {
@@ -160,18 +164,14 @@ public class TelaTable extends AppCompatActivity {
         String busca;
         busca = db.vMAX();
         vMax = Float.parseFloat(busca.toString());
+
     }
 
     //metodo para calcular o intervalo
     public void calculo() {
         calculado = vMax - vMin;
         intervalo = (calculado) / tTable;
-
-        Log.i("INFO", " Intervalo = " + intervalo);
-        Log.i("INFO", " Tamanho da Tabela = " + tTable);
-        Log.i("INFO", " Amplitude = " + calculado);
     }
-
 
     //metodo de definir o tamanho maximo de classes que a tabela deverar ter
     public void tClasse() {

@@ -23,9 +23,7 @@ public class TelaCadastro extends AppCompatActivity {
 
 
     private EditText dados;
-    private BotaoSimNao event;
     float valor;
-    String d;
     DBManager dbMAnager = new DBManager(this);
 
     @Override
@@ -34,8 +32,6 @@ public class TelaCadastro extends AppCompatActivity {
         setContentView(R.layout.activity_tela_cadastro);
 
         dados = (EditText) findViewById(R.id.etCadastro);
-        event = new BotaoSimNao();
-
     }
 
 
@@ -70,10 +66,9 @@ public class TelaCadastro extends AppCompatActivity {
             AlertDialog.Builder alertDialog;
             alertDialog = new AlertDialog.Builder(this);
             alertDialog.setTitle(getResources().getString(R.string.avisoSalvar));
-            alertDialog.setMessage(getResources().getString(R.string.avisoContinuar));
-            alertDialog.setPositiveButton("Sim",event);
-            alertDialog.setNegativeButton("Não",event);
+            dados.setText("");
             alertDialog.show();
+
         }
         //caso o usuario não tenha informado nenhum valor
         catch (Exception e){
@@ -88,21 +83,4 @@ public class TelaCadastro extends AppCompatActivity {
         Intent intent = new Intent(TelaCadastro.this, TelaPrincipal.class);
         startActivity(intent);
     }
-}
-
-/*************************************************************
-*Classe de que implementa o alerta com usuario para inserir mais itens no banco
- ************************************************************/
-class BotaoSimNao implements DialogInterface.OnClickListener{
-
-
-    @Override
-    public void onClick(DialogInterface dialogInterface, int codBotao) {
-        Log.i("INFO",codBotao+"");
-        if (codBotao == -2){
-
-        }
-    }
-
-
 }

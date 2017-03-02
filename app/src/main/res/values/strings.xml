@@ -35,9 +35,9 @@
     <string name="twClass">Classe</string>
     <string name="twIntervalo">Intervalo</string>
     <string name="twFreq">Fi</string>
-    <string name="twFreqRel">Fr</string>
+    <string name="twFreqRel">Fr%</string>
     <string name="twFreqAcu">Fac</string>
-    <string name="twFreqAcuRel">Frac</string>
+    <string name="twFreqAcuRel">Frac%</string>
 
 
 </resources>
