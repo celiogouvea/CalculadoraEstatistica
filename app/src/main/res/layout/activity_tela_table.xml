@@ -71,7 +71,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/listViewItensTable"
             android:scrollbars="horizontal"
-            android:gravity="center"/>
+            android:gravity="center">
+        </ListView>
+
     </LinearLayout>
 
 </RelativeLayout>

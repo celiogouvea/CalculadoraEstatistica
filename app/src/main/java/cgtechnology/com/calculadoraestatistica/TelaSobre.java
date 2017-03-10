@@ -11,7 +11,7 @@ import android.view.View;
  * Created by pdj_3 on 09/02/2017.
  */
 
-public class TelaSobre extends AppCompatActivity {
+public class   TelaSobre extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
