@@ -1,19 +1,16 @@
 package cgtechnology.com.calculadoraestatistica;
 
-import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.support.v7.graphics.Palette;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-
-import java.util.ArrayList;
-
-import static android.support.v4.app.ActivityCompat.startActivity;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 /**
  * Created by pdj_3 on 10/02/2017.
@@ -26,12 +23,18 @@ public class TelaCadastro extends AppCompatActivity {
     float valor;
     DBManager dbMAnager = new DBManager(this);
 
+    ImageView imagem = null;
+    RelativeLayout layout = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_cadastro);
 
         dados = (EditText) findViewById(R.id.etCadastro);
+        imagem = (ImageView) findViewById(R.id.ibRol);
+        layout = (RelativeLayout) findViewById(R.id.layoutCadastro);
+        corLayout();
     }
 
 
@@ -78,9 +81,31 @@ public class TelaCadastro extends AppCompatActivity {
             alertDialog.show();
         }
     }
-    // Metodo do Botão voltar para a tela inicial
-    public void trocarTelaSB(View view){
-        Intent intent = new Intent(TelaCadastro.this, TelaPrincipal.class);
+    //Metodo botão para troca de tela rol
+    public void trocarTelaLista(View view){
+        Intent intent = new Intent(TelaCadastro.this, TelaRol.class);
         startActivity(intent);
+    }
+    //Metodo botão para troca de tela tabela
+    public void trocarTelaTabela(View view){
+        Intent intent = new Intent(TelaCadastro.this, TelaTable.class);
+        startActivity(intent);
+    }
+
+    public void corLayout(){
+        BitmapDrawable drawable = (BitmapDrawable) imagem.getDrawable();
+        final Bitmap bitmap = drawable.getBitmap();
+
+        Palette.Builder builder = new Palette.Builder(bitmap);
+        builder.generate(new Palette.PaletteAsyncListener() {
+            @Override
+            public void onGenerated(Palette palette) {
+                Palette.Swatch vibrant = palette.getLightMutedSwatch();
+                if (vibrant != null)
+                {
+                    layout.setBackgroundColor(vibrant.getRgb());
+                }
+            }
+        });
     }
 }

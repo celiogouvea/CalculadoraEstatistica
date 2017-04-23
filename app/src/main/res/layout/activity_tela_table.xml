@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -65,7 +67,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="45dp"
         android:layout_marginLeft="30dp"
-        android:id="@+id/linearLayout">
+        android:id="@+id/linearLayout"
+        tools:ignore="RtlHardcoded">
 
         <ListView
             android:layout_width="match_parent"
@@ -84,7 +87,9 @@
         android:layout_marginTop="380dp"
         android:layout_marginLeft="20dp"
         android:stretchColumns="0,1,2"
-        android:gravity="center">
+        android:gravity="center"
+        android:id="@+id/tableLayout"
+        tools:ignore="RtlHardcoded">
 
         <TableRow
             android:layout_width="match_parent"
@@ -128,7 +133,8 @@
                 android:text="TextView"
                 android:textColor="#000000"
                 android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,SpUsage" />
 
             <TextView
                 android:id="@+id/tvResuMediana"
@@ -138,7 +144,8 @@
                 android:text="TextView"
                 android:textColor="#000000"
                 android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,SpUsage" />
 
             <TextView
                 android:id="@+id/tvResuModa"
@@ -148,9 +155,20 @@
                 android:text="TextView"
                 android:textColor="#000000"
                 android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,SpUsage" />
         </TableRow>
 
     </TableLayout>
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="Graphic"
+        app:srcCompat="@drawable/grafico"
+        tools:ignore="ContentDescription" />
 
 </RelativeLayout>

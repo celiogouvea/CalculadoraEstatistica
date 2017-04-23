@@ -1,9 +1,9 @@
 package cgtechnology.com.calculadoraestatistica;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,9 +40,8 @@ public class TelaTable extends AppCompatActivity {
     float frac; // determina a frequencia relativa acumulada
     float fr; // determina a frequencia relativa
 
-    ArrayList<Float> franterio = new ArrayList<>();
-    ArrayList<Float> frequencia = new ArrayList<>();
-    ArrayList<Float> fAcumAnt = new ArrayList<>();
+    float classe[] = null;
+    float valorAcumolado[] = null;
 
 
     String resuMedia;
@@ -121,9 +120,7 @@ public class TelaTable extends AppCompatActivity {
             iten = dbMAnager.getItemTable(vInicial, vFinal);// chamando metodo da classe de gerenciador
             preencher(iten); //chamando metodo de atribuição de valores e adicionando a suas classes
 
-            franterio.add(vInicial);
-            frequencia.add(Float.parseFloat(iten));
-            fAcumAnt.add(fac);
+
 
             //Insere dados no array
             vetRegistros.add(new DadosTabela(i + 1, " " +df.format(vInicial) + "  |-->  " +df.format(vFinal),
@@ -201,17 +198,17 @@ public class TelaTable extends AppCompatActivity {
         int f = Integer.parseInt(buscaTdb.toString());
         int i = (int)total/f;
 
-        Log.i("INFO",franterio.get(i)+" -> Valor Classe inferior");
-        Log.i("INFO",fAcumAnt.get(i)+" _> valor frequencia acumulada anterior");
-        Log.i("INFO",intervalo+" -> Intervalo");
-        Log.i("INFO",frequencia+" -> Frequencia");
 
-        float reusltadoMediana=(franterio.get(i)+((((f/2)-fAcumAnt.get(i-1))*intervalo)/(frequencia.get(i))));
-        resuMediana = ""+reusltadoMediana;
 
 
         //moda
        // resuModa =""+((3*reusltadoMediana)-(2*total));
+    }
+
+    public void Graphic(View view)
+    {
+        Intent intent = new Intent(TelaTable.this, Graphic.class);
+        startActivity(intent);
     }
 }
 

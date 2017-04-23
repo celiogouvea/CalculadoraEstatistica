@@ -1,35 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutCadastro"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <EditText
+        android:id="@+id/etCadastro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:ems="10"
-        android:layout_below="@+id/tvValor"
         android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvValor"
         android:layout_marginStart="45dp"
         android:layout_marginTop="13dp"
-        android:id="@+id/etCadastro"
-        android:hint="@string/etnumeros" />
-
-    <Button
-        android:text="@string/btcadastrovalores"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btTelaCadSalvar"
-        android:layout_below="@+id/etCadastro"
-        android:layout_centerHorizontal="true"
-        android:onClick="salvar" />
+        android:ems="10"
+        android:hint="@string/etnumeros"
+        android:inputType="numberDecimal" />
 
     <TextView
-        android:text="@string/tvnumeros"
+        android:id="@+id/tvValor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:id="@+id/tvValor"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/etCadastro" />
+        android:layout_alignStart="@+id/etCadastro"
+        android:layout_marginTop="70dp"
+        android:text="@string/tvnumeros" />
+
+    <ImageButton
+        android:id="@+id/btTelaCadSalvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etCadastro"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp"
+        android:onClick="salvar"
+        app:srcCompat="@drawable/btsalvar"
+        tools:ignore="ContentDescription" />
+
+    <ImageButton
+        android:id="@+id/ibRol"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:layout_alignStart="@+id/etCadastro"
+        android:layout_below="@+id/btTelaCadSalvar"
+        android:layout_marginTop="59dp"
+        android:onClick="trocarTelaLista"
+        app:srcCompat="@drawable/rol"
+        tools:ignore="ContentDescription" />
+
+    <Button
+        android:id="@+id/btTabela"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/btTelaCadSalvar"
+        android:layout_alignTop="@+id/ibRol"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="11dp"
+        android:onClick="trocarTelaTabela"
+        android:text="Button" />
 
 </RelativeLayout>
