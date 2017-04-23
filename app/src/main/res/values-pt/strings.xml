@@ -27,7 +27,7 @@
     <string name="twsobrepessoastitulo">Desenvolvedor</string>
     <string name="twsobrepessoasdesenvolvedores">Célio Gomes Gouvêa</string>
     <string name="twsobrepessoastitulo2">Orientadores</string>
-    <string name="twsobrepessoasorientadores">Arlenes Delabary Spada \nSilvano Maneck Malfati</string>
+    <string name="twsobrepessoasorientadores">Arlenes Delabary Spada \nSilvano Maneck Malfatti</string>
     <string name="btVoltar">Voltar</string>
 
 
@@ -38,6 +38,9 @@
     <string name="twFreqRel">Fr%</string>
     <string name="twFreqAcu">Fac</string>
     <string name="twFreqAcuRel">Frac%</string>
+    <string name="twmedia">Media</string>
+    <string name="twmediana">Mediana</string>
+    <string name="twmoda">Moda</string>
 
 
 </resources>

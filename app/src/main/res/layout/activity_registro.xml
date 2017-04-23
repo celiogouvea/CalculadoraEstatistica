@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/registro">
+    android:id="@+id/registro"
+    android:stretchColumns="0,1,2,3,4">
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1">
 
         <TextView
             android:text="class"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:id="@+id/classe"
             android:layout_weight="1"
@@ -21,7 +21,7 @@
 
         <TextView
             android:text="intervalo"
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:id="@+id/intervalo"
             android:layout_weight="1"
@@ -58,6 +58,6 @@
             android:id="@+id/freqAcuRel"
             android:layout_weight="1"
             android:gravity="center"/>
-    </LinearLayout>
+    </TableRow>
 
-</RelativeLayout>
+</TableLayout>

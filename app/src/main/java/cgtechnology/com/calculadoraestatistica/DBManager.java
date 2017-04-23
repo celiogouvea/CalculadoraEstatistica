@@ -46,7 +46,7 @@ public class DBManager {
         if (cursor != null && cursor.moveToFirst()){
             itens = new ArrayList<String>();
             do {
-                itens.add("Valor->"+cursor.getString(1));
+                itens.add("Id"+cursor.getString(0)+" = Valor->"+cursor.getString(1));
             }while (cursor.moveToNext());
         }
         return itens;
@@ -91,15 +91,28 @@ public class DBManager {
     //busca da quantidade de itens dentro do intervalo de classe
     public String getItemTable(float minimo, float maximo){
 
-            String Max = null;
-            SQLiteDatabase db = dbHelper.getReadableDatabase();
-            String sql = "SELECT COUNT(item) FROM rool WHERE item >= '" + minimo + "' AND item <= '" + maximo + "' ";
-            Cursor cursor = db.rawQuery(sql, null);
-            if (cursor != null && cursor.moveToFirst()) {
-                Max = cursor.getString(0);
-            }
-            return Max;
-
+        String Max = null;
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String sql = "SELECT COUNT(item) FROM rool WHERE item >= '" + minimo + "' AND item <= '" + maximo + "' ";
+        Cursor cursor = db.rawQuery(sql, null);
+        if (cursor != null && cursor.moveToFirst()) {
+            Max = cursor.getString(0);
+        }
+        return Max;
+    }
+    //busca de valor do intem de cada um no banco
+    public String valorItem()
+    {
+        String Max = null;
+        float calculo = 0;
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String sql = "SELECT SUM(item) FROM rool";
+        Cursor cursor = db.rawQuery(sql,null);
+        if (cursor != null && cursor.moveToFirst()){
+            calculo = Float.parseFloat(cursor.getString(0));
+        }
+        Max=""+calculo;
+        return Max;
     }
 
 

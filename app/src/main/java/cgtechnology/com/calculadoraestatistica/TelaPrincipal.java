@@ -50,5 +50,10 @@ public class TelaPrincipal extends AppCompatActivity {
         Intent intent = new Intent(TelaPrincipal.this, TelaTable.class);
         startActivity(intent);
     }
+    public void Graphic(View view)
+    {
+        Intent intent = new Intent(TelaPrincipal.this, Graphic.class);
+        startActivity(intent);
+    }
 
 }

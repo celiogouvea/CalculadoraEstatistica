@@ -54,4 +54,16 @@
         android:layout_marginTop="26dp"
         android:id="@+id/btTabela"
         android:onClick="trocarTelaTabela" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/btTabela"
+        android:layout_below="@+id/btTabela"
+        android:layout_marginTop="47dp"
+        android:onClick="Graphic"
+        android:text="Graphic" />
+
+
 </RelativeLayout>

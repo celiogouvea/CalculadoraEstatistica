@@ -1,7 +1,6 @@
 package cgtechnology.com.calculadoraestatistica;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -9,14 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -47,18 +40,27 @@ public class TelaTable extends AppCompatActivity {
     float frac; // determina a frequencia relativa acumulada
     float fr; // determina a frequencia relativa
 
+    ArrayList<Float> franterio = new ArrayList<>();
+    ArrayList<Float> frequencia = new ArrayList<>();
+    ArrayList<Float> fAcumAnt = new ArrayList<>();
+
+
+    String resuMedia;
+    String resuMediana;
+    String resuModa;
+
+    TextView media = null;
+    TextView mediana = null;
+    TextView moda = null;
+
 
 
 
     //Cria o array de dados que sera utilizado para popular o arraylist
-    ArrayList<DadosTabela> vetRegistros = new ArrayList<DadosTabela>();
+    ArrayList<DadosTabela> vetRegistros = new ArrayList<>();
     Adaptador adaptador = null;
     ListView vrLista = null;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+
 
 
     @Override
@@ -71,6 +73,14 @@ public class TelaTable extends AppCompatActivity {
 
         //chama metodo que apresentara a tabela ao usuario
         criacaoTable();
+        //set textView para MMM
+        media = (TextView) findViewById(R.id.tvResuMedia);
+        media.setText(resuMedia);
+        mediana = (TextView) findViewById(R.id.tvResuMediana);
+        mediana.setText(resuMediana);
+        moda = (TextView) findViewById(R.id.tvResuModa);
+        moda.setText(resuModa);
+
     }
 
     public void onStart() {
@@ -99,7 +109,8 @@ public class TelaTable extends AppCompatActivity {
         valorMax(); //chamar metodo de maior valor no banco
         tClasse();  //chamar metodo de definir o tamanho de da classe
         calculo();  //chamar metodo de calculo do intervalo
-        String iten = null; // item que recebera quantidade de elementos do
+
+        String iten; // item que recebera quantidade de elementos do
         DBManager dbMAnager = new DBManager(this); // intanciando a classe de gerenciador do banco de dados
         vInicial = vMin; //vIncicial recebe vMin para passar para metodo da classe do gerenciador definir o valor inicial do intervalo
         vFinal = vMin + intervalo;//vFinal recebe vMin mais o intervalo para passar para o metodo da classe de gerenciador definir o valor final do intervalo
@@ -109,6 +120,10 @@ public class TelaTable extends AppCompatActivity {
 
             iten = dbMAnager.getItemTable(vInicial, vFinal);// chamando metodo da classe de gerenciador
             preencher(iten); //chamando metodo de atribuição de valores e adicionando a suas classes
+
+            franterio.add(vInicial);
+            frequencia.add(Float.parseFloat(iten));
+            fAcumAnt.add(fac);
 
             //Insere dados no array
             vetRegistros.add(new DadosTabela(i + 1, " " +df.format(vInicial) + "  |-->  " +df.format(vFinal),
@@ -125,6 +140,8 @@ public class TelaTable extends AppCompatActivity {
             }
         }
         vrLista.setAdapter(adaptador);// colocando os dados na tela
+        //
+        mediaModaMediana();      //chamar metodo de media, mediana e moda
     }
 
     //metodo de atribuição de valores nas variaveis
@@ -148,7 +165,6 @@ public class TelaTable extends AppCompatActivity {
         String busca;
         busca = db.vMAX();
         vMax = Float.parseFloat(busca.toString());
-
     }
 
     //metodo para calcular o intervalo
@@ -169,6 +185,33 @@ public class TelaTable extends AppCompatActivity {
         } else {
             tTable = (int) k + 1;
         }
+    }
+    //calculo de tendenncia de medias centrais
+    public void mediaModaMediana()
+    {
+        //media
+        String busca = null;
+        busca = db.valorItem();
+        float total = Float.parseFloat(busca);
+        resuMedia = ""+ total / 2;
+
+
+        //mediana
+        String buscaTdb = db.tBanco();
+        int f = Integer.parseInt(buscaTdb.toString());
+        int i = (int)total/f;
+
+        Log.i("INFO",franterio.get(i)+" -> Valor Classe inferior");
+        Log.i("INFO",fAcumAnt.get(i)+" _> valor frequencia acumulada anterior");
+        Log.i("INFO",intervalo+" -> Intervalo");
+        Log.i("INFO",frequencia+" -> Frequencia");
+
+        float reusltadoMediana=(franterio.get(i)+((((f/2)-fAcumAnt.get(i-1))*intervalo)/(frequencia.get(i))));
+        resuMediana = ""+reusltadoMediana;
+
+
+        //moda
+       // resuModa =""+((3*reusltadoMediana)-(2*total));
     }
 }
 
@@ -214,4 +257,3 @@ class Adaptador extends ArrayAdapter<DadosTabela>{
     }
 
 }
-
