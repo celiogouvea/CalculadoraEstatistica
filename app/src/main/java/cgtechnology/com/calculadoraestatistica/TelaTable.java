@@ -3,6 +3,7 @@ package cgtechnology.com.calculadoraestatistica;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -70,8 +72,25 @@ public class TelaTable extends AppCompatActivity {
         //Insere dados no array
         vrLista = (ListView) findViewById(R.id.listViewItensTable);
 
-        //chama metodo que apresentara a tabela ao usuario
-        criacaoTable();
+
+        ArrayList<String> itens = db.getAllItem();
+        if (itens != null)
+        {
+            //chama metodo que apresentara a tabela ao usuario
+            criacaoTable();
+        }
+        else {
+            Toast.makeText(TelaTable.this,"Sem Dados Armazenados", Toast.LENGTH_LONG).show();
+            SystemClock.sleep(500);
+            Intent intent = new Intent(this, TelaCadastro.class);
+            startActivity(intent);
+            this.finish();
+        }
+
+
+
+
+
         //set textView para MMM
         media = (TextView) findViewById(R.id.tvResuMedia);
         media.setText(resuMedia);
@@ -203,6 +222,12 @@ public class TelaTable extends AppCompatActivity {
 
         //moda
        // resuModa =""+((3*reusltadoMediana)-(2*total));
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        this.finish();
     }
 
     public void Graphic(View view)

@@ -1,13 +1,13 @@
 package cgtechnology.com.calculadoraestatistica;
 
-import android.database.sqlite.SQLiteDatabase;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -52,19 +52,41 @@ public class TelaRol extends AppCompatActivity {
 
             //Chama metodo da classe gerenciador do banco para busca dos dados
             itens = dbMAnager.getAllItem();
-            //criar um adaptador para inserir os dados em um listView
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_activated_1, itens);
-            //define que o listView existe
-            ListView listview = (ListView) findViewById(R.id.listViewItens);
-            //inserir os dados em tela
-            listview.setAdapter(adapter);
+            if (itens != null)
+            {
+                //criar um adaptador para inserir os dados em um listView
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_activated_1, itens);
+                //define que o listView existe
+                ListView listview = (ListView) findViewById(R.id.listViewItens);
+                //inserir os dados em tela
+                listview.setAdapter(adapter);
+            }
+            else {
+                Toast.makeText(TelaRol.this,"Sem Dados Armazenados", Toast.LENGTH_LONG).show();
+                Thread.sleep(500);
+                Intent intent = new Intent(this, TelaCadastro.class);
+                startActivity(intent);
+                this.finish();
+
+
+            }
         }
         //Metodo para informar que ainda não exite dados no banco
         catch (Exception e){ // ainda precisa ser implementado erro
             AlertDialog alertDialog;
             alertDialog = new AlertDialog.Builder(this).create();
-            alertDialog.setMessage("Tabela ainda sem dados");
+            alertDialog.setMessage("Erro ->"+e);
             alertDialog.show();
         }
     }
+
+    //Acionar quando botão de voltar for chamado
+    @Override
+    public void onBackPressed()
+    {
+        //encerra activity
+        this.finish();
+    }
+
+
 }

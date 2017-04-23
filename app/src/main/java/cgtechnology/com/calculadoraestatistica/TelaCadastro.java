@@ -83,14 +83,21 @@ public class TelaCadastro extends AppCompatActivity {
     }
     //Metodo botão para troca de tela rol
     public void trocarTelaLista(View view){
-        Intent intent = new Intent(TelaCadastro.this, TelaRol.class);
+        Intent intent = new Intent(this, TelaRol.class);
         startActivity(intent);
     }
     //Metodo botão para troca de tela tabela
     public void trocarTelaTabela(View view){
-        Intent intent = new Intent(TelaCadastro.this, TelaTable.class);
+        Intent intent = new Intent(this, TelaTable.class);
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        this.finish();
+    }
+
 
     public void corLayout(){
         BitmapDrawable drawable = (BitmapDrawable) imagem.getDrawable();

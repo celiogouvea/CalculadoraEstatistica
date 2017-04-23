@@ -49,6 +49,14 @@ public class Graphic extends AppCompatActivity {
                 Log.i("INFO","LISTNER 2");
             }
         });
+
+
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+       this.finish();
     }
 
 

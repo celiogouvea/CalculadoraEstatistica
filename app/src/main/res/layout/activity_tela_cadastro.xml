@@ -47,7 +47,7 @@
         android:layout_marginTop="59dp"
         android:onClick="trocarTelaLista"
         app:srcCompat="@drawable/rol"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription,PxUsage" />
 
     <Button
         android:id="@+id/btTabela"
@@ -58,6 +58,7 @@
         android:layout_marginStart="68dp"
         android:layout_marginTop="11dp"
         android:onClick="trocarTelaTabela"
-        android:text="Button" />
+        android:text="Tabela"
+        tools:ignore="HardcodedText" />
 
 </RelativeLayout>
