@@ -24,6 +24,10 @@ public class TelaRol extends AppCompatActivity {
         //Chamar o metodo que busca todos os dados do banco
         Banco();
     }
+
+    /*******************************************************
+    *Metodos para eventos de celular que são necessarios!
+     *******************************************************/
     public void onStart(){
         super.onStart();
     }

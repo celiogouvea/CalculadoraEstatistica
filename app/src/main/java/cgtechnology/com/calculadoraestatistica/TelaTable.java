@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,15 +36,21 @@ public class TelaTable extends AppCompatActivity {
     float vFinal; //recebe os valores maximo de cada classe e passa para o metodo de metodo da classe de gerenciador do banco
     float vMin; //determina o menor valor do banco
     float vMax; //determina o maior valor do banco
-    float calculado; // determina qual e amplitudo
+    float calculado; // determina qual e amplitude
     float tTable; // determina a quantidade de classe
     float intervalo; // determina qual será o intervalo de uma classe a outra
     float fac; // determina a frequencia acumulada
     float frac; // determina a frequencia relativa acumulada
     float fr; // determina a frequencia relativa
 
-    float classe[] = null;
-    float valorAcumolado[] = null;
+    ArrayList<Float> limiteInfeiro = new ArrayList<>();
+    ArrayList<Float> limiteSuperior = new ArrayList<>();
+    ArrayList<Float> valorAcumulado = new ArrayList<>();
+    ArrayList<Integer> frequencia = new ArrayList<>();
+    ArrayList<String> frequenciaAcumuladaRelativa = new ArrayList<>();
+    float med = 0;
+
+
 
 
     String resuMedia;
@@ -127,6 +134,7 @@ public class TelaTable extends AppCompatActivity {
         valorMax(); //chamar metodo de maior valor no banco
         tClasse();  //chamar metodo de definir o tamanho de da classe
         calculo();  //chamar metodo de calculo do intervalo
+        valorAcumulado.add((float) 0);
 
         String iten; // item que recebera quantidade de elementos do
         DBManager dbMAnager = new DBManager(this); // intanciando a classe de gerenciador do banco de dados
@@ -141,12 +149,21 @@ public class TelaTable extends AppCompatActivity {
 
 
 
+
             //Insere dados no array
             vetRegistros.add(new DadosTabela(i + 1, " " +df.format(vInicial) + "  |-->  " +df.format(vFinal),
                     "  " + iten, "  " + df.format(fac), "   " + df.format(fr), "   " + df.format(frac) ));
 
-            adaptador = new Adaptador(this, vetRegistros);//inserindo dados na classe de adaptador para apresentação no view
+            limiteInfeiro.add(vInicial);
+            valorAcumulado.add(fac);
+            limiteSuperior.add(vFinal);
+            frequencia.add(Integer.parseInt(iten));
+            frequenciaAcumuladaRelativa.add(""+fr);
+            med = med+(((vInicial+vFinal)/2)*Float.parseFloat(iten));
 
+
+
+            adaptador = new Adaptador(this, vetRegistros);//inserindo dados na classe de adaptador para apresentação no view
             vInicial = vFinal; // novo valor inicial para a proxima iteração do laço de reptição
             if (i == (tTable-2)){
                 vFinal = (float) ((vFinal+d)+intervalo);
@@ -154,6 +171,7 @@ public class TelaTable extends AppCompatActivity {
             else{
                 vFinal = vFinal + intervalo;//novo valor fical para a proxima iteração do laço de repetição
             }
+
         }
         vrLista.setAdapter(adaptador);// colocando os dados na tela
         //
@@ -202,38 +220,65 @@ public class TelaTable extends AppCompatActivity {
             tTable = (int) k + 1;
         }
     }
+
     //calculo de tendenncia de medias centrais
     public void mediaModaMediana()
     {
         //media
-        String busca = null;
-        busca = db.valorItem();
+        String busca= db.valorItem();
+        int numero = Integer.parseInt(db.tBanco());
         float total = Float.parseFloat(busca);
-        resuMedia = ""+ total / 2;
+        float resutado = total / numero;
+        float resu = med/numero;
+        resuMedia = ""+ df.format(resu);
 
 
         //mediana
-        String buscaTdb = db.tBanco();
-        int f = Integer.parseInt(buscaTdb.toString());
-        int i = (int)total/f;
-
-
-
+        float limite = 0;
+        float acumulada = 0;
+        int freq = 0;
+        for (int i = 0; i < tTable; i++)
+        {
+            if (resutado >= limiteInfeiro.get(i) && resutado <= limiteSuperior.get(i) )
+            {
+                limite = limiteInfeiro.get(i);
+                freq = frequencia.get(i);
+                if (i == 0){
+                    acumulada = 0;
+                }
+                else
+                {
+                    acumulada = valorAcumulado.get(i);
+                }
+            }
+        }
+        float resu1 = limite+(((((numero)/2) - acumulada)*intervalo)/freq);
+        resuMediana = ""+df.format(resu1);
+        Log.i("INFO","qtd elementos "+numero);
+        Log.i("INFO","Freq Acumulada Anterio: "+acumulada);
+        Log.i("INFO","amplitude "+intervalo);
+        Log.i("INFO","frequencia da classe "+freq);
+        Log.i("INFO","mediana "+resuMediana);
 
         //moda
-       // resuModa =""+((3*reusltadoMediana)-(2*total));
+        resuModa =""+df.format((3*resu1)-(2*resu));
     }
 
+    //quando o usuario usar o botão voltar encerra a seção atual
     @Override
     public void onBackPressed()
     {
         this.finish();
     }
 
+    //chamar o activity de grafico e passar os dados
     public void Graphic(View view)
     {
+        Bundle bundle = new Bundle();
+        bundle.putStringArrayList("Lista",frequenciaAcumuladaRelativa);
         Intent intent = new Intent(TelaTable.this, Graphic.class);
-        startActivity(intent);
+        intent.putExtras(bundle);
+        startActivityForResult(intent,0);
     }
 }
 
