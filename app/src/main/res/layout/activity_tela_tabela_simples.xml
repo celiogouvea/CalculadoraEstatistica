@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cgtechnology.com.calculadoraestatistica.TelaTabelaSimples">
+
+    <TextView
+        android:id="@+id/tvValorSimples"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="Valores"
+        tools:ignore="HardcodedText"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/tvMediaSimples"
+        android:layout_marginEnd="13dp" />
+
+    <TextView
+        android:id="@+id/tvFrequenciaSimples"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:text="Frequencia"
+        tools:ignore="HardcodedText"
+        android:layout_above="@+id/lvFrequenciaSimples"
+        android:layout_toEndOf="@+id/tvMedianaSimples" />
+
+    <ListView
+        android:id="@+id/lvFrequenciaSimples"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@+id/tvValorSimples" />
+
+    <TextView
+        android:id="@+id/tvmedia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Media"
+        tools:ignore="HardcodedText"
+        android:layout_below="@+id/lvFrequenciaSimples"
+        android:layout_toStartOf="@+id/tvFrequenciaSimples" />
+
+    <TextView
+        android:id="@+id/tvmediana"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mediana"
+        tools:ignore="HardcodedText"
+        android:layout_above="@+id/tvMediaSimples"
+        android:layout_alignEnd="@+id/tvMediaSimples" />
+
+    <TextView
+        android:id="@+id/tvmoda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Moda"
+        tools:ignore="HardcodedText"
+        android:layout_alignBaseline="@+id/tvmedia"
+        android:layout_alignBottom="@+id/tvmedia"
+        android:layout_alignEnd="@+id/tvFrequenciaSimples" />
+
+    <TextView
+        android:id="@+id/tvMediaSimples"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:text="TextView"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText,SpUsage"
+        android:layout_below="@+id/tvmedia"
+        android:layout_toStartOf="@+id/tvMedianaSimples"
+        android:layout_marginEnd="15dp" />
+
+    <TextView
+        android:id="@+id/tvMedianaSimples"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvMediaSimples"
+        android:layout_centerHorizontal="true"
+        android:text="TextView"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText,SpUsage" />
+
+    <TextView
+        android:id="@+id/tvModaSimples"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:ignore="HardcodedText,SpUsage"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_alignBaseline="@+id/tvMedianaSimples"
+        android:layout_alignBottom="@+id/tvMedianaSimples"
+        android:layout_alignStart="@+id/tvFrequenciaSimples"
+        android:layout_marginStart="17dp" />
+</RelativeLayout>

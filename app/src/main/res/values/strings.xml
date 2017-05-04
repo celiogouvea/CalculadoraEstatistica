@@ -8,7 +8,7 @@
 
     //string cadastro
     <string name="tvnumeros">Numeros</string>
-    <string name="etnumeros">Valores 0 - 9</string>
+    <string name="etnumeros">Valores ex: 10.00</string>
     <string name="btcadastrovalores">Salvar</string>
     <string name="avisoSalvar">Informações Salva com Sucesso</string>
     <string name="avisoCampoVazio">Campo Obrigatorio !</string>
@@ -19,7 +19,6 @@
 
     //string rol
     <string name="avisoBanco">Banco sem Dados</string>
-
 
 
     //sttrings sobre
@@ -42,6 +41,6 @@
     <string name="twmediana">Mediana</string>
     <string name="twmoda">Moda</string>
     <string name="tvDescrição">Implementação da calculadora estatística para os ganhos educacional é a promoção ao modo que o alcance da informação não fique somente condicionamento ao espaço físico conhecimento através da nova ferramenta.</string>
-
+    <string name="twAvisoTabelaVazia">Nenhum Dado Armazenado</string>
 
 </resources>

@@ -11,12 +11,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:gravity="center"
         android:layout_below="@+id/tvValor"
         android:layout_marginStart="45dp"
         android:layout_marginTop="13dp"
         android:ems="10"
         android:hint="@string/etnumeros"
-        android:inputType="numberDecimal" />
+        android:inputType="numberSigned|numberDecimal"/>
 
     <TextView
         android:id="@+id/tvValor"
@@ -42,12 +43,12 @@
         android:id="@+id/ibRol"
         android:layout_width="150px"
         android:layout_height="150px"
-        android:layout_alignStart="@+id/etCadastro"
-        android:layout_below="@+id/btTelaCadSalvar"
-        android:layout_marginTop="59dp"
+        android:layout_marginTop="61dp"
         android:onClick="trocarTelaLista"
         app:srcCompat="@drawable/rol"
-        tools:ignore="ContentDescription,PxUsage" />
+        tools:ignore="ContentDescription,PxUsage"
+        android:layout_below="@+id/btTelaCadSalvar"
+        android:layout_toEndOf="@+id/tvValor" />
 
     <Button
         android:id="@+id/btTabela"
@@ -59,6 +60,30 @@
         android:layout_marginTop="11dp"
         android:onClick="trocarTelaTabela"
         android:text="Tabela"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/etQtd"
+        android:gravity="center"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btTelaCadSalvar"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/etCadastro"
+        android:layout_marginRight="20dp"
+        android:ems="10"
+        android:inputType="number"
+        android:text="1"
+        tools:ignore="HardcodedText,LabelFor,RtlHardcoded" />
+
+    <TextView
+        android:id="@+id/qtdElemento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etCadastro"
+        android:layout_toEndOf="@+id/etCadastro"
+        android:text="Quantidade de Elementos"
+        android:gravity="center"
         tools:ignore="HardcodedText" />
 
 </RelativeLayout>

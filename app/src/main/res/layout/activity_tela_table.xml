@@ -165,10 +165,23 @@
         android:id="@+id/imageButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:onClick="Graphic"
         app:srcCompat="@drawable/grafico"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/linearLayout"
+        android:layout_marginEnd="55dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/tableLayout"
+        android:layout_marginBottom="18dp"
+        android:layout_marginStart="50dp"
+        android:onClick="percentual"
+        android:text="Percentil"
+        tools:ignore="HardcodedText" />
 
 </RelativeLayout>

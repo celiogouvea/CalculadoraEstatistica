@@ -3,7 +3,6 @@ package cgtechnology.com.calculadoraestatistica;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -46,7 +45,7 @@ public class DBManager {
         if (cursor != null && cursor.moveToFirst()){
             itens = new ArrayList<String>();
             do {
-                itens.add("Id"+cursor.getString(0)+" = Valor->"+cursor.getString(1));
+                itens.add(cursor.getString(1));
             }while (cursor.moveToNext());
         }
         return itens;
@@ -66,6 +65,7 @@ public class DBManager {
         }
         return Min;
     }
+
     //busca do maior valor do banco
     public String vMAX(){
         String Max = null;
@@ -77,6 +77,7 @@ public class DBManager {
         }
         return Max;
     }
+
     //busca do maior id do banco
     public String tBanco(){
         String Max = null;
@@ -88,6 +89,7 @@ public class DBManager {
         }
         return Max;
     }
+
     //busca da quantidade de itens dentro do intervalo de classe
     public String getItemTable(float minimo, float maximo){
 
@@ -100,6 +102,7 @@ public class DBManager {
         }
         return Max;
     }
+
     //busca de valor do intem de cada um no banco
     public String valorItem()
     {
@@ -115,7 +118,17 @@ public class DBManager {
         return Max;
     }
 
-
-
+    //busca dos valores iguais no banco
+    public String valorIgual(String valor)
+    {
+        String quantidade = null;
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String sql = "SELECT COUNT('"+valor+"') FROM  rool GROUP BY item HAVING COUNT(*) > 1";
+        Cursor cursor = db.rawQuery(sql,null);
+        if (cursor != null && cursor.moveToFirst()){
+            quantidade = cursor.getString(0);
+        }
+        return quantidade;
+    }
 
 }

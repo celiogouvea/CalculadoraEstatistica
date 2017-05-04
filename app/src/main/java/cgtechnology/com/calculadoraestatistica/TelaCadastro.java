@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -20,6 +21,7 @@ public class TelaCadastro extends AppCompatActivity {
 
 
     private EditText dados;
+    private EditText qtd = null;
     float valor;
     DBManager dbMAnager = new DBManager(this);
 
@@ -32,6 +34,7 @@ public class TelaCadastro extends AppCompatActivity {
         setContentView(R.layout.activity_tela_cadastro);
 
         dados = (EditText) findViewById(R.id.etCadastro);
+        qtd = (EditText) findViewById(R.id.etQtd);
         imagem = (ImageView) findViewById(R.id.ibRol);
         layout = (RelativeLayout) findViewById(R.id.layoutCadastro);
         corLayout();
@@ -60,18 +63,20 @@ public class TelaCadastro extends AppCompatActivity {
      * *********************************************/
     //metodos de salvar valores no banco
     public void salvar(View view){
-        try {
-            //tranforma campo de texto em um tipo float
-            valor = Float.parseFloat(dados.getText().toString());
-            // passa para o gerenciador do banco para salvar
-            dbMAnager.addItem(valor);
-            //criar um dialogo para apresentação para usuario decidir se ira continuar a salvar ou não
-            AlertDialog.Builder alertDialog;
-            alertDialog = new AlertDialog.Builder(this);
-            alertDialog.setTitle(getResources().getString(R.string.avisoSalvar));
-            dados.setText("");
-            alertDialog.show();
 
+        try {
+            valor = Float.parseFloat(dados.getText().toString());
+            int q = Integer.parseInt(qtd.getText().toString());
+                for (int i = 0; i<q; i++)
+                {
+                    dbMAnager.addItem(valor);
+                }
+                AlertDialog.Builder alertDialog;
+                alertDialog = new AlertDialog.Builder(this);
+                alertDialog.setTitle(getResources().getString(R.string.avisoSalvar));
+                dados.setText("");
+                qtd.setText("1");
+                alertDialog.show();
         }
         //caso o usuario não tenha informado nenhum valor
         catch (Exception e){
@@ -81,6 +86,7 @@ public class TelaCadastro extends AppCompatActivity {
             alertDialog.show();
         }
     }
+
     //Metodo botão para troca de tela rol
     public void trocarTelaLista(View view){
         Intent intent = new Intent(this, TelaRol.class);
@@ -88,8 +94,31 @@ public class TelaCadastro extends AppCompatActivity {
     }
     //Metodo botão para troca de tela tabela
     public void trocarTelaTabela(View view){
-        Intent intent = new Intent(this, TelaTable.class);
-        startActivity(intent);
+
+        AlertDialog.Builder editar = new AlertDialog.Builder(this);
+        View mView = getLayoutInflater().inflate(R.layout.activity_troca_tabela, null);
+        Button simples = (Button) mView.findViewById(R.id.btTabelaRol);
+        Button continua = (Button) mView.findViewById(R.id.btTabelaContinua);
+
+        simples.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TelaCadastro.this, TelaTabelaSimples.class);
+                startActivity(intent);
+            }
+        });
+
+        continua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TelaCadastro.this, TelaTable.class);
+                startActivity(intent);
+            }
+        });
+
+        editar.setView(mView);
+        AlertDialog alert = editar.create();
+        alert.show();
     }
 
     @Override

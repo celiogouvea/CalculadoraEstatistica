@@ -4,12 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -87,7 +89,7 @@ public class TelaTable extends AppCompatActivity {
             criacaoTable();
         }
         else {
-            Toast.makeText(TelaTable.this,"Sem Dados Armazenados", Toast.LENGTH_LONG).show();
+            Toast.makeText(TelaTable.this,getResources().getString(R.string.twAvisoTabelaVazia), Toast.LENGTH_LONG).show();
             SystemClock.sleep(500);
             Intent intent = new Intent(this, TelaCadastro.class);
             startActivity(intent);
@@ -160,6 +162,7 @@ public class TelaTable extends AppCompatActivity {
             frequencia.add(Integer.parseInt(iten));
             frequenciaAcumuladaRelativa.add(""+fr);
             med = med+(((vInicial+vFinal)/2)*Float.parseFloat(iten));
+
 
 
 
@@ -243,6 +246,10 @@ public class TelaTable extends AppCompatActivity {
             {
                 limite = limiteInfeiro.get(i);
                 freq = frequencia.get(i);
+                if (freq == 0)
+                {
+                    freq =1;
+                }
                 if (i == 0){
                     acumulada = 0;
                 }
@@ -254,14 +261,12 @@ public class TelaTable extends AppCompatActivity {
         }
         float resu1 = limite+(((((numero)/2) - acumulada)*intervalo)/freq);
         resuMediana = ""+df.format(resu1);
-        Log.i("INFO","qtd elementos "+numero);
-        Log.i("INFO","Freq Acumulada Anterio: "+acumulada);
-        Log.i("INFO","amplitude "+intervalo);
-        Log.i("INFO","frequencia da classe "+freq);
-        Log.i("INFO","mediana "+resuMediana);
 
-        //moda
+        //moda pearson
         resuModa =""+df.format((3*resu1)-(2*resu));
+
+        // moda de cuzber
+        //float resusCuzber = limite+(intervalo*(freq - ));
     }
 
     //quando o usuario usar o botão voltar encerra a seção atual
@@ -272,14 +277,86 @@ public class TelaTable extends AppCompatActivity {
     }
 
     //chamar o activity de grafico e passar os dados
-    public void Graphic(View view)
-    {
+    public void Graphic(View view) {
         Bundle bundle = new Bundle();
         bundle.putStringArrayList("Lista",frequenciaAcumuladaRelativa);
         Intent intent = new Intent(TelaTable.this, Graphic.class);
         intent.putExtras(bundle);
         startActivityForResult(intent,0);
     }
+
+    //metodo que faz o calculo do percentil
+    public void percentual(View view)
+    {
+        AlertDialog.Builder editar = new AlertDialog.Builder(this);
+        View mView = getLayoutInflater().inflate(R.layout.activity_percentil, null);
+        final EditText per = (EditText) mView.findViewById(R.id.etPorcento);
+        Button calcular = (Button) mView.findViewById(R.id.btCalcular);
+
+
+        calcular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    int valor = Integer.parseInt(db.tBanco());
+                    int porcentagem = Integer.parseInt(per.getText().toString());
+                    float resutado = ((valor * porcentagem) / 100);
+
+                    if (porcentagem >100)
+                    {
+                        Toast.makeText(TelaTable.this, "Valor Tem que Ser Menor que 100", Toast.LENGTH_LONG).show();
+                    }
+
+                    float limite = 0;
+                    float acumulada = 0;
+                    int freq = 0;
+                    for (int i = 0; i < tTable; i++)
+                    {
+                        if (resutado >= limiteInfeiro.get(i) && resutado <= limiteSuperior.get(i) )
+                        {
+                            limite = limiteInfeiro.get(i);
+                            freq = frequencia.get(i);
+                            if (freq == 0)
+                            {
+                                freq =1;
+                            }
+                            if (i == 0){
+                                acumulada = 0;
+                            }
+                            else
+                            {
+                                acumulada = valorAcumulado.get(i);
+                            }
+                        }
+                    }
+                    float resu1 = limite+((((resutado) - acumulada)*intervalo)/freq);
+
+                    for (int i = 0; i < tTable; i++)
+                    {
+                        if (resu1 >= limiteInfeiro.get(i) && resu1 <= limiteSuperior.get(i))
+                        {
+                            int alterar = i +1;
+                            String texto =  "percentual é : " + df.format(resu1)+" Localizado na Classe -> "+alterar;
+                            Toast.makeText(TelaTable.this, texto, Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+                catch (Exception e){
+                    Toast.makeText(TelaTable.this, "Valor Não Pode Ser Nulo", Toast.LENGTH_LONG).show();
+                }
+
+
+
+                //Intent intent = new Intent(TelaTable.this, TelaAssimetria.class);
+                //startActivity(intent);
+            }
+        });
+
+        editar.setView(mView);
+        AlertDialog alert = editar.create();
+        alert.show();
+    }
+
 }
 
 

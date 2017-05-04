@@ -66,7 +66,7 @@ public class TelaRol extends AppCompatActivity {
                 listview.setAdapter(adapter);
             }
             else {
-                Toast.makeText(TelaRol.this,"Sem Dados Armazenados", Toast.LENGTH_LONG).show();
+                Toast.makeText(TelaRol.this,getResources().getString(R.string.twAvisoTabelaVazia), Toast.LENGTH_LONG).show();
                 Thread.sleep(500);
                 Intent intent = new Intent(this, TelaCadastro.class);
                 startActivity(intent);

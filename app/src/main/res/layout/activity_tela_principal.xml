@@ -54,5 +54,15 @@
         app:srcCompat="@drawable/cadastro"
         tools:ignore="ContentDescription" />
 
+    <Button
+        android:id="@+id/btTabelaPrincipal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageButton4"
+        android:layout_centerVertical="true"
+        android:onClick="trocarTelaTabela"
+        android:text="Tabela"
+        tools:ignore="HardcodedText" />
+
 
 </RelativeLayout>
