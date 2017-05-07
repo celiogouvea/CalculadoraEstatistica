@@ -123,7 +123,7 @@ public class DBManager {
     {
         String quantidade = null;
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        String sql = "SELECT COUNT('"+valor+"') FROM  rool GROUP BY item HAVING COUNT(*) > 1";
+        String sql = "SELECT COUNT('"+valor+"') FROM  rool WHERE item = '"+valor+"'";
         Cursor cursor = db.rawQuery(sql,null);
         if (cursor != null && cursor.moveToFirst()){
             quantidade = cursor.getString(0);

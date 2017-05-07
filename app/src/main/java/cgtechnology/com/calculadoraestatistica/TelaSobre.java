@@ -1,10 +1,7 @@
 package cgtechnology.com.calculadoraestatistica;
 
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.graphics.Palette;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -26,7 +23,7 @@ public class   TelaSobre extends AppCompatActivity {
 
         imagem = (ImageView) findViewById(R.id.ivUnitins);
         layout = (RelativeLayout) findViewById(R.id.layoutSobre);
-        corLayout();
+
     }
 
     public void onStart(){
@@ -45,21 +42,5 @@ public class   TelaSobre extends AppCompatActivity {
         super.onDestroy();
     }
 
-    public void corLayout(){
-        BitmapDrawable drawable = (BitmapDrawable) imagem.getDrawable();
-        final Bitmap bitmap = drawable.getBitmap();
-
-        Palette.Builder builder = new Palette.Builder(bitmap);
-        builder.generate(new Palette.PaletteAsyncListener() {
-            @Override
-            public void onGenerated(Palette palette) {
-                Palette.Swatch vibrant = palette.getLightMutedSwatch();
-                if (vibrant != null)
-                {
-                    layout.setBackgroundColor(vibrant.getRgb());
-                }
-            }
-        });
-    }
 
 }

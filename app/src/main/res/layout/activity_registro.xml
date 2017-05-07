@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/registro"
-    android:stretchColumns="0,1,2,3,4,5">
+    android:stretchColumns="0,1,2,3,4,5"
+    android:background="#87C2ED">
 
     <TableRow
         android:layout_width="match_parent"
@@ -20,6 +21,7 @@
             android:id="@+id/classe"
             android:layout_weight="1"
             android:gravity="center"
+            android:textStyle="bold"
             android:layout_marginLeft="-20dp"/>
 
         <TextView
@@ -27,6 +29,7 @@
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:id="@+id/intervalo"
+            android:textStyle="bold"
             android:layout_weight="1"
             android:gravity="center"/>
 
@@ -35,6 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/freq"
+            android:textStyle="bold"
             android:layout_weight="1"
             android:gravity="center"/>
 
@@ -43,6 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/freqAcu"
+            android:textStyle="bold"
             android:layout_weight="1"
             android:gravity="center"/>
 
@@ -52,6 +57,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/freqRel"
             android:layout_weight="1"
+            android:textStyle="bold"
             android:gravity="center"/>
 
         <TextView
@@ -60,6 +66,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/freqAcuRel"
             android:layout_weight="1"
+            android:textStyle="bold"
             android:gravity="center"/>
     </TableRow>
 

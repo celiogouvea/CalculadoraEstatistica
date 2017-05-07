@@ -5,7 +5,7 @@
     android:id="@+id/layoutSobre"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F8FF">
+    android:background="#87C2ED">
 
     <LinearLayout
         android:orientation="vertical"

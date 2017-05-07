@@ -10,8 +10,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="cgtechnology.com.calculadoraestatistica.TelaPrincipal"
-    android:background="#476EEE"
-    android:layout_gravity="center_horizontal">
+    android:layout_gravity="center_horizontal"
+    android:background="#87C2ED">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -25,44 +25,44 @@
             tools:ignore="ContentDescription" />
     </FrameLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/imageButton2"
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="trocarTelaCadastro"
+            android:text="CADASTRO"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="trocarTelaLista"
+            android:text="ROL"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/btTabelaPrincipal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="trocarTelaTabela"
+            android:text="Tabela"
+            tools:ignore="HardcodedText,UnusedAttribute" />
+
+        <Button
+            android:id="@+id/button6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="trocarTelaSB"
-            app:srcCompat="@drawable/sobre"
-            tools:ignore="ContentDescription"
-            android:layout_marginStart="37dp"
-            android:layout_marginBottom="13dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true" />
-    </RelativeLayout>
+            android:text=" SOBRE !"
+            tools:ignore="HardcodedText" />
 
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="41dp"
-        android:onClick="trocarTelaCadastro"
-        app:srcCompat="@drawable/cadastro"
-        tools:ignore="ContentDescription" />
-
-    <Button
-        android:id="@+id/btTabelaPrincipal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/imageButton4"
-        android:layout_centerVertical="true"
-        android:onClick="trocarTelaTabela"
-        android:text="Tabela"
-        tools:ignore="HardcodedText" />
+    </LinearLayout>
 
 
 </RelativeLayout>

@@ -1,12 +1,9 @@
 package cgtechnology.com.calculadoraestatistica;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.graphics.Palette;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -22,7 +19,7 @@ public class TelaPrincipal extends AppCompatActivity {
         setContentView(R.layout.activity_tela_principal);
         imagem = (ImageView) findViewById(R.id.ivFundo);
         layout = (RelativeLayout) findViewById(R.id.activity_tela_principal);
-        corLayout();
+
     }
     public void onStart(){
         super.onStart();
@@ -54,24 +51,6 @@ public class TelaPrincipal extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //metodo para adicionar cor ao layout
-    public void corLayout(){
-        BitmapDrawable drawable = (BitmapDrawable) imagem.getDrawable();
-        final Bitmap bitmap = drawable.getBitmap();
-
-        Palette.Builder builder = new Palette.Builder(bitmap);
-        builder.generate(new Palette.PaletteAsyncListener() {
-            @Override
-            public void onGenerated(Palette palette) {
-                Palette.Swatch vibrant = palette.getLightVibrantSwatch();
-                if (vibrant != null)
-                {
-                    layout.setBackgroundColor(vibrant.getRgb());
-                }
-            }
-        });
-    }
-
     //Metodo botão para troca de tela tabela
     public void trocarTelaTabela(View view){
 
@@ -99,6 +78,12 @@ public class TelaPrincipal extends AppCompatActivity {
         editar.setView(mView);
         AlertDialog alert = editar.create();
         alert.show();
+    }
+
+    //Metodo botão para troca de tela rol
+    public void trocarTelaLista(View view){
+        Intent intent = new Intent(this, TelaRol.class);
+        startActivity(intent);
     }
 
 }

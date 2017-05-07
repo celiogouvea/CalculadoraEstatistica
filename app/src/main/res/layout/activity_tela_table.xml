@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#87C2ED">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -161,27 +162,29 @@
 
     </TableLayout>
 
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="Graphic"
-        app:srcCompat="@drawable/grafico"
-        tools:ignore="ContentDescription"
-        android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/linearLayout"
-        android:layout_marginEnd="55dp" />
+        android:orientation="horizontal"
+        android:layout_marginTop="440dp">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/tableLayout"
-        android:layout_marginBottom="18dp"
-        android:layout_marginStart="50dp"
-        android:onClick="percentual"
-        android:text="Percentil"
-        tools:ignore="HardcodedText" />
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="percentual"
+            android:text="Percentil"
+            tools:ignore="ButtonStyle,HardcodedText" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="Graphic"
+            android:text="Grafico"
+            tools:ignore="ButtonStyle,HardcodedText" />
+    </LinearLayout>
 
 </RelativeLayout>

@@ -310,9 +310,13 @@ public class TelaTable extends AppCompatActivity {
                     float limite = 0;
                     float acumulada = 0;
                     int freq = 0;
+
                     for (int i = 0; i < tTable; i++)
                     {
-                        if (resutado >= limiteInfeiro.get(i) && resutado <= limiteSuperior.get(i) )
+                        int f = i +1;
+                        float v = valorAcumulado.get(f);
+                        float t = valorAcumulado.get(i);
+                        if ( resutado >= t && resutado <= v )
                         {
                             limite = limiteInfeiro.get(i);
                             freq = frequencia.get(i);

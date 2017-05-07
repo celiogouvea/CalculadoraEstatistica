@@ -1,12 +1,9 @@
 package cgtechnology.com.calculadoraestatistica;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.graphics.Palette;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,9 +32,7 @@ public class TelaCadastro extends AppCompatActivity {
 
         dados = (EditText) findViewById(R.id.etCadastro);
         qtd = (EditText) findViewById(R.id.etQtd);
-        imagem = (ImageView) findViewById(R.id.ibRol);
         layout = (RelativeLayout) findViewById(R.id.layoutCadastro);
-        corLayout();
     }
 
 
@@ -128,20 +123,4 @@ public class TelaCadastro extends AppCompatActivity {
     }
 
 
-    public void corLayout(){
-        BitmapDrawable drawable = (BitmapDrawable) imagem.getDrawable();
-        final Bitmap bitmap = drawable.getBitmap();
-
-        Palette.Builder builder = new Palette.Builder(bitmap);
-        builder.generate(new Palette.PaletteAsyncListener() {
-            @Override
-            public void onGenerated(Palette palette) {
-                Palette.Swatch vibrant = palette.getLightMutedSwatch();
-                if (vibrant != null)
-                {
-                    layout.setBackgroundColor(vibrant.getRgb());
-                }
-            }
-        });
-    }
 }

@@ -83,7 +83,7 @@ public class Graphic extends AppCompatActivity {
 
         PieDataSet pieDataSet = new PieDataSet(yEntry,"Classes");
         pieDataSet.setSliceSpace(5);
-        pieDataSet.setValueTextSize(30);
+        pieDataSet.setValueTextSize(20);
 
 
         ArrayList<Integer> cores = new ArrayList<>();
@@ -138,7 +138,7 @@ public class Graphic extends AppCompatActivity {
         ArrayList<IBarDataSet> dataSets = new ArrayList<IBarDataSet>();
         dataSets.add(set1);
         BarData data = new BarData(dataSets);
-        data.setValueTextSize(10f);
+        data.setValueTextSize(20);
         data.setBarWidth(0.9f);
         barChart.setData(data);
     }

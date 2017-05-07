@@ -4,7 +4,8 @@
     android:id="@+id/layout_troca_tabela"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:background="#87C2ED">
 
     <Button
         android:id="@+id/btTabelaRol"

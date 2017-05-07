@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layoutCadastro"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#87C2ED">
 
     <EditText
         android:id="@+id/etCadastro"
@@ -28,39 +29,17 @@
         android:layout_marginTop="70dp"
         android:text="@string/tvnumeros" />
 
-    <ImageButton
-        android:id="@+id/btTelaCadSalvar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etCadastro"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="37dp"
-        android:onClick="salvar"
-        app:srcCompat="@drawable/btsalvar"
-        tools:ignore="ContentDescription" />
-
-    <ImageButton
-        android:id="@+id/ibRol"
-        android:layout_width="150px"
-        android:layout_height="150px"
-        android:layout_marginTop="61dp"
-        android:onClick="trocarTelaLista"
-        app:srcCompat="@drawable/rol"
-        tools:ignore="ContentDescription,PxUsage"
-        android:layout_below="@+id/btTelaCadSalvar"
-        android:layout_toEndOf="@+id/tvValor" />
-
     <Button
         android:id="@+id/btTabela"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/btTelaCadSalvar"
-        android:layout_alignTop="@+id/ibRol"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="11dp"
         android:onClick="trocarTelaTabela"
         android:text="Tabela"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText"
+        android:layout_marginTop="52dp"
+        android:layout_below="@+id/button9"
+        android:layout_toEndOf="@+id/button10"
+        android:layout_marginStart="49dp" />
 
     <EditText
         android:id="@+id/etQtd"
@@ -74,7 +53,7 @@
         android:ems="10"
         android:inputType="number"
         android:text="1"
-        tools:ignore="HardcodedText,LabelFor,RtlHardcoded" />
+        tools:ignore="HardcodedText,LabelFor,RtlHardcoded,UnknownId" />
 
     <TextView
         android:id="@+id/qtdElemento"
@@ -85,5 +64,28 @@
         android:text="Quantidade de Elementos"
         android:gravity="center"
         tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="59dp"
+        android:onClick="salvar"
+        android:text="SALVAR"
+        android:layout_below="@+id/etCadastro"
+        android:layout_centerHorizontal="true"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:onClick="trocarTelaLista"
+        android:text="ROL"
+        tools:ignore="HardcodedText"
+        android:layout_alignBaseline="@+id/btTabela"
+        android:layout_alignBottom="@+id/btTabela"
+        android:layout_alignStart="@+id/etCadastro" />
 
 </RelativeLayout>
