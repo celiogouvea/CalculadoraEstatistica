@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#87C2ED"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvApresentacaoTabelaClasse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/tvApresentacaoTabelaClasse"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvTextoTabelaClasse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/tvTextoTabelaClasse" />
+
+    <Button
+        android:id="@+id/btTroca"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btOK"/>
+</LinearLayout>

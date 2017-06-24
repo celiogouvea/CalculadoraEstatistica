@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Tabela V. Simples"
+        android:text="Tabela Variavel Discreta"
         tools:ignore="ButtonStyle,HardcodedText" />
 
     <Button
@@ -20,6 +20,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="TABELA V. CONTINUA"
+        android:text="TABELA VARIAVEL CONTINUA"
         tools:ignore="ButtonStyle,HardcodedText" />
 </LinearLayout>

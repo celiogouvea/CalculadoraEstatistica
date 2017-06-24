@@ -131,4 +131,24 @@ public class DBManager {
         return quantidade;
     }
 
+    //busca dos valores iguais no banco
+    public String valorEspeficico(String valor)
+    {
+        String quantidade = null;
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String sql = "SELECT item FROM  rool WHERE id = '"+valor+"'";
+        Cursor cursor = db.rawQuery(sql,null);
+        if (cursor != null && cursor.moveToFirst()){
+            quantidade = cursor.getString(0);
+        }
+        return quantidade;
+    }
+
+    //medodo para deleção do banco
+    public void deleteBanco (){
+
+        dbHelper.DV_VERSIN = dbHelper.DV_VERSIN+1;
+
+    }
+
 }

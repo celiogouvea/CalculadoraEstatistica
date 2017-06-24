@@ -59,31 +59,80 @@ public class TelaPrincipal extends AppCompatActivity {
         Button simples = (Button) mView.findViewById(R.id.btTabelaRol);
         Button continua = (Button) mView.findViewById(R.id.btTabelaContinua);
 
+
+
+        editar.setView(mView);
+        final AlertDialog alertPincipal = editar.create();
+        alertPincipal.show();
+
         simples.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TelaPrincipal.this, TelaTabelaSimples.class);
-                startActivity(intent);
+                final AlertDialog.Builder editar = new AlertDialog.Builder(TelaPrincipal.this);
+                View mView = getLayoutInflater().inflate(R.layout.activity_apresentacao_tabela_simples, null);
+                Button simples = (Button) mView.findViewById(R.id.btTroca);
+                editar.setView(mView);
+                final AlertDialog alert = editar.create();
+                alert.show();
+
+                simples.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(TelaPrincipal.this, TelaTabelaSimples.class);
+                        alert.dismiss();
+                        alertPincipal.dismiss();
+                        startActivity(intent);
+                    }
+                });
+
+
+
             }
         });
 
         continua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TelaPrincipal.this, TelaTable.class);
-                startActivity(intent);
+                final AlertDialog.Builder editar = new AlertDialog.Builder(TelaPrincipal.this);
+                View mView = getLayoutInflater().inflate(R.layout.activity_apresentacao_tabela_classe, null);
+                Button simples = (Button) mView.findViewById(R.id.btTroca);
+
+                editar.setView(mView);
+                final AlertDialog alert = editar.create();
+                alert.show();
+
+                simples.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(TelaPrincipal.this, TelaTable.class);
+                        alert.dismiss();
+                        alertPincipal.dismiss();
+                        startActivity(intent);
+
+                    }
+                });
             }
         });
-
-        editar.setView(mView);
-        AlertDialog alert = editar.create();
-        alert.show();
     }
 
     //Metodo botão para troca de tela rol
     public void trocarTelaLista(View view){
-        Intent intent = new Intent(this, TelaRol.class);
-        startActivity(intent);
+        final AlertDialog.Builder editar = new AlertDialog.Builder(this);
+        View mView = getLayoutInflater().inflate(R.layout.activity_apresentacao, null);
+        Button simples = (Button) mView.findViewById(R.id.btTrocarol);
+
+        editar.setView(mView);
+        final AlertDialog alert = editar.create();
+        alert.show();
+
+        simples.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TelaPrincipal.this, TelaRol.class);
+                alert.dismiss();
+                startActivity(intent);
+            }
+        });
     }
 
 }

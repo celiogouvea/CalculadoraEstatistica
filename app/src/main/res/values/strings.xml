@@ -43,4 +43,29 @@
     <string name="tvDescrição">Implementação da calculadora estatística para os ganhos educacional é a promoção ao modo que o alcance da informação não fique somente condicionamento ao espaço físico conhecimento através da nova ferramenta.</string>
     <string name="twAvisoTabelaVazia">Nenhum Dado Armazenado</string>
 
+
+
+    //Layout de apresentação
+    <string name="btOK"> OK </string>
+    <string name="tvApresentacaoRol">ROL</string>
+    <string name="tvApresentacaoTextoRol">ROL: organização dos dados por ordem de valor, sendo ele crescente ou decrescente \n\n\nReferencia: livro</string>
+    <string name="tvApresentacaoTabelaSimples"> Tabela de Frequencia </string>
+    <string name="tvTextoTabelaSimples"> Distribuição de frequencia e quantidade de vezes em quela se apresenta \n\n\n Referencia: livro</string>
+    <string name="tvApresentacaoTabelaClasse"> Tabela de Classes </string>
+    <string name="tvTextoTabelaClasse">Classes: serve para reunir grandes massas de dados dentro das classes \n\n\n Referencia: livro</string>
+    <string name="tvApresentacaoCalculoMedia"> Calculo da Media </string>
+    <string name="tvTextoCalculoMedia"> A soma de todos os Elementos dividido pela quantidade\n Media      = Σ(elementos)\n______________\nn\n\n\n Referencia: livro </string>
+    <string name="tvApresentacaoCalculoModa"> Calculo Moda </string>
+    <string name="tvTextoCalculoModa">O resultado para a o calculo basea-se em\n\n Moda = (mediana * 3) - (media *2)  </string>
+    <string name="tvApresentacaoCalculoMediana"> Calculo Mediana </string>
+    <string name="tvTextoCalculoMediana"> \n Mediana = Linferio + [ ((Σ fi / 2) - Fac ant ) * h\n _________________\n fi classe                   ]</string>
+    <string name="tvApresentacaoCalculoMedianaSimples"> Mediana de Variavel Discreta </string>
+    <string name="tvTextoCalculoMedianaSimples"> Divide o rol ao meio e o elemento que estiver no e mediana\n\n N\n____\n2 </string>
+    <string name="tvApresentacaoCalculoModaSimples"> Moda </string>
+    <string name="tvTextCalculoModaSimples"> Quando o elemento que maior se apresenta </string>
+
+
+
+
+
 </resources>

@@ -44,10 +44,12 @@ public class Graphic extends AppCompatActivity {
         pieChart.setCenterText("Grafico");
         pieChart.setCenterTextSize(20);
         pieChart.setDrawEntryLabels(true);
+        pieChart.getDescription().setEnabled(false);
         addDataSet(pieChart);
 
 
         barChart = (BarChart) findViewById(R.id.barChart);
+        barChart.getDescription().setEnabled(false);
         Legend l = barChart.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
@@ -77,7 +79,9 @@ public class Graphic extends AppCompatActivity {
         for (int i = 0; i < dados.size(); i++)
         {
             float dado = Float.parseFloat(dados.get(i));
-            yEntry.add(new PieEntry(dado));
+            if (Float.parseFloat(dados.get(i)) != 0) {
+                yEntry.add(new PieEntry(dado));
+            }
         }
 
 
@@ -118,6 +122,7 @@ public class Graphic extends AppCompatActivity {
 
         for (int i = 0; i < dados.size(); i++)
         {
+
             float dado = Float.parseFloat(dados.get(i));
             lista.add(new BarEntry(i, dado));
         }

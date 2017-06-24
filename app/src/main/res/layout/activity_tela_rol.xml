@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="#87C2ED">
+    android:background="#87C2ED"
+    android:focusableInTouchMode="false"
+    android:focusable="false"
+    android:clickable="false">
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listViewItens"
+        android:focusableInTouchMode="false"
+        android:focusable="false"
+        android:clickable="false"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         />
+
 </RelativeLayout>

@@ -16,10 +16,15 @@ import java.util.ArrayList;
 
 public class TelaRol extends AppCompatActivity {
 
+    ListView listview = null;
+    DBManager dbMAnager = new DBManager(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_rol);
+
+        listview = (ListView) findViewById(R.id.listViewItens);
 
         //Chamar o metodo que busca todos os dados do banco
         Banco();
@@ -52,7 +57,7 @@ public class TelaRol extends AppCompatActivity {
             //criar um arrayList para receber os dados da consulta
             ArrayList<String> itens = null;
             // intancia a classe gerenciador do banco
-            DBManager dbMAnager = new DBManager(this);
+
 
             //Chama metodo da classe gerenciador do banco para busca dos dados
             itens = dbMAnager.getAllItem();
@@ -61,7 +66,8 @@ public class TelaRol extends AppCompatActivity {
                 //criar um adaptador para inserir os dados em um listView
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_activated_1, itens);
                 //define que o listView existe
-                ListView listview = (ListView) findViewById(R.id.listViewItens);
+
+
                 //inserir os dados em tela
                 listview.setAdapter(adapter);
             }
@@ -84,6 +90,8 @@ public class TelaRol extends AppCompatActivity {
         }
     }
 
+
+
     //Acionar quando botão de voltar for chamado
     @Override
     public void onBackPressed()
@@ -91,6 +99,7 @@ public class TelaRol extends AppCompatActivity {
         //encerra activity
         this.finish();
     }
+
 
 
 }

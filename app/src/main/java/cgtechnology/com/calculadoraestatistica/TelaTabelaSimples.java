@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,9 +49,6 @@ public class TelaTabelaSimples extends AppCompatActivity {
             startActivity(intent);
             this.finish();
         }
-
-
-
     }
 
     public void onStart() {
@@ -90,6 +88,7 @@ public class TelaTabelaSimples extends AppCompatActivity {
 
             conferir.add(listaItens.get(i));
             valor = db.valorIgual(listaItens.get(i));
+            int f = i+1;
 
 
 
@@ -102,11 +101,10 @@ public class TelaTabelaSimples extends AppCompatActivity {
             {
                 registros.add(new DadosTabelaSimples(listaItens.get(i), valor));
                 adaptador = new Adaptador1(this, registros);
-                media = media+(Float.parseFloat(listaItens.get(i))*Float.parseFloat(valor));
                 valores.add(valor);
                 if (Float.parseFloat(valor)>moda)
                 {
-                    moda = Float.parseFloat(listaItens.get(i));
+                    moda = Float.parseFloat(listaItens.get(f));
                 }
                 valor = null;
             }
@@ -114,11 +112,10 @@ public class TelaTabelaSimples extends AppCompatActivity {
             {
                 registros.add(new DadosTabelaSimples(listaItens.get(i), valor));
                 adaptador = new Adaptador1(this, registros);
-                media = media+(Float.parseFloat(listaItens.get(i))*Float.parseFloat(valor));
                 valores.add(valor);
                 if (Float.parseFloat(valor)>moda)
                 {
-                    moda = Float.parseFloat(listaItens.get(i));
+                    moda = Float.parseFloat(listaItens.get(f));
                 }
                 valor = null;
             }
@@ -128,18 +125,49 @@ public class TelaTabelaSimples extends AppCompatActivity {
         }
 
         lista.setAdapter(adaptador);
-        Float resultadoMedia = media / Integer.parseInt(tamanhoBanco);
+        media = Integer.parseInt(db.tBanco())/2;
+        String busca = db.valorEspeficico(""+media);
+        Float resultadoMedia = Float.parseFloat(busca);
 
         TextView resuMedia = (TextView) findViewById(R.id.tvMediaSimples);
         resuMedia.setText(""+df.format(resultadoMedia));
+        resuMedia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder editar = new AlertDialog.Builder(TelaTabelaSimples.this);
+                View mView = getLayoutInflater().inflate(R.layout.activity_apresentacao_calculo_media, null);
+                editar.setView(mView);
+                AlertDialog alert = editar.create();
+                alert.show();
+            }
+        });
 
         TextView resuMediana = (TextView) findViewById(R.id.tvMedianaSimples);
         resuMediana.setText(""+df.format(mediana));
-
+        resuMediana.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder editar = new AlertDialog.Builder(TelaTabelaSimples.this);
+                View mView = getLayoutInflater().inflate(R.layout.activity_apresentacao_calculo_mediana_simples, null);
+                editar.setView(mView);
+                AlertDialog alert = editar.create();
+                alert.show();
+            }
+        });
 
 
         TextView resuModa = (TextView) findViewById(R.id.tvModaSimples);
         resuModa.setText(""+df.format(moda));
+        resuModa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder editar = new AlertDialog.Builder(TelaTabelaSimples.this);
+                View mView = getLayoutInflater().inflate(R.layout.activity_apresentacao_calculo_moda_simples, null);
+                editar.setView(mView);
+                AlertDialog alert = editar.create();
+                alert.show();
+            }
+        });
 
 
     }

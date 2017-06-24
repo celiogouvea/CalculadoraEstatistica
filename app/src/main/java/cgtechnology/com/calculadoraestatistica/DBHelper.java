@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBHelper extends SQLiteOpenHelper {
 
     private static String DB_NAME = "teste";
-    private static int DV_VERSIN = 1;
+    public static int DV_VERSIN = 1;
 
     private static String tabela = "CREATE TABLE IF NOT EXISTS rool(id INTEGER PRIMARY KEY AUTOINCREMENT, item FLOAT);";
 
@@ -27,7 +27,10 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int versionAntiga, int versionAtual) {
-
+    public void onUpgrade(SQLiteDatabase db, int versionAntiga, int versionAtual) {
+        db.execSQL("DROP TABLE IF EXISTS rool");
     }
+
+
+
 }

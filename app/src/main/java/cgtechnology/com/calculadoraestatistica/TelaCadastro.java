@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 /**
@@ -22,7 +21,6 @@ public class TelaCadastro extends AppCompatActivity {
     float valor;
     DBManager dbMAnager = new DBManager(this);
 
-    ImageView imagem = null;
     RelativeLayout layout = null;
 
     @Override
@@ -84,9 +82,24 @@ public class TelaCadastro extends AppCompatActivity {
 
     //Metodo botão para troca de tela rol
     public void trocarTelaLista(View view){
-        Intent intent = new Intent(this, TelaRol.class);
-        startActivity(intent);
+        final AlertDialog.Builder editar = new AlertDialog.Builder(this);
+        View mView = getLayoutInflater().inflate(R.layout.activity_apresentacao, null);
+        Button simples = (Button) mView.findViewById(R.id.btTrocarol);
+
+        simples.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TelaCadastro.this, TelaRol.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        editar.setView(mView);
+        AlertDialog alert = editar.create();
+        alert.show();
     }
+
     //Metodo botão para troca de tela tabela
     public void trocarTelaTabela(View view){
 
@@ -95,25 +108,56 @@ public class TelaCadastro extends AppCompatActivity {
         Button simples = (Button) mView.findViewById(R.id.btTabelaRol);
         Button continua = (Button) mView.findViewById(R.id.btTabelaContinua);
 
+
+        editar.setView(mView);
+        AlertDialog alertPrincipal = editar.create();
+        alertPrincipal.show();
+
         simples.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TelaCadastro.this, TelaTabelaSimples.class);
-                startActivity(intent);
+                final AlertDialog.Builder editar = new AlertDialog.Builder(TelaCadastro.this);
+                View mView = getLayoutInflater().inflate(R.layout.activity_apresentacao_tabela_simples, null);
+                Button simples = (Button) mView.findViewById(R.id.btTroca);
+
+                simples.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(TelaCadastro.this, TelaTabelaSimples.class);
+                        startActivity(intent);
+                        finish();
+
+                    }
+                });
+
+                editar.setView(mView);
+                AlertDialog alert = editar.create();
+                alert.show();
             }
         });
 
         continua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TelaCadastro.this, TelaTable.class);
-                startActivity(intent);
+                final AlertDialog.Builder editar = new AlertDialog.Builder(TelaCadastro.this);
+                View mView = getLayoutInflater().inflate(R.layout.activity_apresentacao_tabela_classe, null);
+                Button simples = (Button) mView.findViewById(R.id.btTroca);
+
+                simples.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(TelaCadastro.this, TelaTable.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
+                editar.setView(mView);
+                AlertDialog alert = editar.create();
+                alert.show();
             }
         });
 
-        editar.setView(mView);
-        AlertDialog alert = editar.create();
-        alert.show();
     }
 
     @Override

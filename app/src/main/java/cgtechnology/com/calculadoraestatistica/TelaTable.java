@@ -103,10 +103,40 @@ public class TelaTable extends AppCompatActivity {
         //set textView para MMM
         media = (TextView) findViewById(R.id.tvResuMedia);
         media.setText(resuMedia);
+        media.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder editar = new AlertDialog.Builder(TelaTable.this);
+                View mView = getLayoutInflater().inflate(R.layout.activity_apresentacao_calculo_media, null);
+                editar.setView(mView);
+                AlertDialog alert = editar.create();
+                alert.show();
+            }
+        });
         mediana = (TextView) findViewById(R.id.tvResuMediana);
         mediana.setText(resuMediana);
+        mediana.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder editar = new AlertDialog.Builder(TelaTable.this);
+                View mView = getLayoutInflater().inflate(R.layout.activity_apresentacao_calculo_mediana, null);
+                editar.setView(mView);
+                AlertDialog alert = editar.create();
+                alert.show();
+            }
+        });
         moda = (TextView) findViewById(R.id.tvResuModa);
         moda.setText(resuModa);
+        moda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder editar = new AlertDialog.Builder(TelaTable.this);
+                View mView = getLayoutInflater().inflate(R.layout.activity_apresentacao_calculo_moda, null);
+                editar.setView(mView);
+                AlertDialog alert = editar.create();
+                alert.show();
+            }
+        });
 
     }
 
@@ -234,6 +264,7 @@ public class TelaTable extends AppCompatActivity {
         float resutado = total / numero;
         float resu = med/numero;
         resuMedia = ""+ df.format(resu);
+
 
 
         //mediana
